@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Encuestas Saaki</string>
+    <string name="login_title">INTRODUCIR CÓDIGO</string>
+    <string name="login_hint">Código</string>
+    <string name="btn_login">Aceptar</string>
+    <string name="error_empty_code">Por favor, introduce un código</string>
+    <string name="code_entered">Código introducido: %1$s</string>
+</resources>
