@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/survey_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/survey_selection"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_survey_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/survey_a"
+        android:layout_marginBottom="16dp"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:padding="12dp"
+        android:background="@drawable/rounded_button"/>
+
+    <Button
+        android:id="@+id/btn_survey_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/survey_b"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:padding="12dp"
+        android:background="@drawable/rounded_button"/>
+
 
 </LinearLayout>

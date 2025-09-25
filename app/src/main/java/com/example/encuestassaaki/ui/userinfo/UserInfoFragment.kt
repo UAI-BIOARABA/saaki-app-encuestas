@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.R
+import com.example.encuestassaaki.ui.survey.SurveySelectionFragment
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -44,7 +45,11 @@ class UserInfoFragment : Fragment() {
         val txtCode: TextView = view.findViewById(R.id.txt_code)
         val editYear: EditText = view.findViewById(R.id.edit_year)
         val spinnerSex: Spinner = view.findViewById(R.id.spinner_sex)
+        val textDate: TextView = view.findViewById(R.id.text_date)
         val btnSave: Button = view.findViewById(R.id.btn_save)
+
+        val today = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+        textDate.text = getString(R.string.today_date, today)
 
         txtCode.text = getString(R.string.user_code, code)
 
@@ -111,15 +116,19 @@ class UserInfoFragment : Fragment() {
                 Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT).show()
             }
 
-            // ⬇️ En ambos casos (nuevo o existente) pasamos a la siguiente pantalla
+            // En ambos casos (nuevo o existente) pasamos a la siguiente pantalla
             goToSurveySelection()
         }
 
     }
 
     private fun goToSurveySelection() {
-        // Aquí luego abriremos SurveySelectionFragment
-        Toast.makeText(requireContext(), "Ir a selección de encuesta", Toast.LENGTH_SHORT).show()
+        val fragment = SurveySelectionFragment()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
+
 
 }

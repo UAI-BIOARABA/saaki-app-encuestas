@@ -10,6 +10,7 @@
     <string name="gender">Seleccionar género:</string>
     <string name="male">Masculino</string>
     <string name="female">Femenino</string>
+    <string name="today_date">Fecha: %1$s</string>
     <string name="save">SELECCIONAR ENCUESTA</string>
     <string name="error_fill_all">Por favor, completa todos los campos</string>
     <string name="data_saved">Datos guardados correctamente</string>
@@ -19,6 +20,10 @@
     <string name="user_code_placeholder">Código:</string>
     <string name="hint_year">Año de nacimiento</string>
     <string name="error_empty_year">Introduce el año de nacimiento</string>
+    <string name="survey_selection">SELECCIONAR ENCUESTA</string>
+    <string name="survey_a">Encuesta A</string>
+    <string name="survey_b">Encuesta B</string>
+
 
     <string-array name="sex_options">
         <item>Masculino</item>
