@@ -1,8 +1,28 @@
 <resources>
     <string name="app_name">Encuestas Saaki</string>
-    <string name="login_title">Introduce tu código</string>
+    <string name="login_title">INTRODUCIR CÓDIGO</string>
     <string name="login_hint">Código</string>
     <string name="btn_login">Aceptar</string>
     <string name="error_empty_code">Por favor, introduce un código</string>
     <string name="code_entered">Código introducido: %1$s</string>
+    <string name="enter_year">Introduce tu año de nacimiento:</string>
+    <string name="year_of_birth">Año de nacimiento</string>
+    <string name="gender">Seleccionar género:</string>
+    <string name="male">Masculino</string>
+    <string name="female">Femenino</string>
+    <string name="save">Guardar</string>
+    <string name="error_fill_all">Por favor, completa todos los campos</string>
+    <string name="data_saved">Datos guardados correctamente</string>
+    <string name="current_date">Fecha actual: %1$s</string>
+    <string name="current_date_placeholder">Fecha actual:</string>
+    <string name="user_code">Código: %1$s</string>
+    <string name="user_code_placeholder">Código:</string>
+    <string name="hint_year">Año de nacimiento</string>
+    <string name="error_empty_year">Introduce el año de nacimiento</string>
+
+    <string-array name="sex_options">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+
 </resources>

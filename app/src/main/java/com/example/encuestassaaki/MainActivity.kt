@@ -1,9 +1,9 @@
 package com.example.encuestassaaki
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.encuestassaaki.ui.login.LoginFragment
+import com.example.encuestassaaki.ui.userinfo.UserInfoFragment
 
 class MainActivity : AppCompatActivity(), LoginFragment.LoginListener {
 
@@ -19,7 +19,11 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginListener {
     }
 
     override fun onLogin(code: String) {
-        Toast.makeText(this, getString(R.string.code_entered, code), Toast.LENGTH_SHORT).show()
-        // Aquí luego navegaremos a UserInfoFragment o SurveySelectionFragment
+        val fragment = UserInfoFragment.newInstance(code)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null) // permite volver atrás con el botón físico
+            .commit()
     }
 }
