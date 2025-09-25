@@ -34,4 +34,24 @@
         android:padding="12dp"
         android:background="@drawable/rounded_button"/>
 
+    <Button
+        android:id="@+id/botonCompartir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COMPARTIR RESPUESTAS"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/botonLimpiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LIMPIAR RESPUESTAS"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        android:textSize="18sp"/>
+
 </LinearLayout>

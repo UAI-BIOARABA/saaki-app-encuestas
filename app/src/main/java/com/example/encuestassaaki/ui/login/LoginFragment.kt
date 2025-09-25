@@ -1,6 +1,6 @@
 package com.example.encuestassaaki.ui.login
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.R
+import java.io.File
 
 class LoginFragment : Fragment() {
 
@@ -19,7 +21,7 @@ class LoginFragment : Fragment() {
 
     private var listener: LoginListener? = null
 
-    override fun onAttach(context: Context) {
+    override fun onAttach(context: android.content.Context) {
         super.onAttach(context)
         if (context is LoginListener) listener = context
     }
@@ -46,6 +48,29 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(), R.string.error_empty_code, Toast.LENGTH_SHORT).show()
             } else {
                 listener?.onLogin(code)
+            }
+        }
+
+        // Botón compartir respuestas
+        val botonCompartir: Button? = view.findViewById(R.id.botonCompartir)
+        botonCompartir?.setOnClickListener {
+            val file = File(requireContext().getExternalFilesDir(null), "encuesta_a.csv")
+            if (file.exists()) {
+                val uri = FileProvider.getUriForFile(
+                    requireContext(),
+                    "${requireContext().packageName}.provider",
+                    file
+                )
+
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/csv"
+                    putExtra(Intent.EXTRA_STREAM, uri)
+                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
+
+                startActivity(Intent.createChooser(intent, "Compartir respuestas"))
+            } else {
+                Toast.makeText(requireContext(), "No hay respuestas guardadas todavía", Toast.LENGTH_SHORT).show()
             }
         }
     }

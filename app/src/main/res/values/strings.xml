@@ -23,6 +23,21 @@
     <string name="survey_selection">SELECCIONAR ENCUESTA</string>
     <string name="survey_a">Encuesta A</string>
     <string name="survey_b">Encuesta B</string>
+    <string name="survey_a_title">Encuesta A</string>
+    <string name="question_number">PREGUNTA %1$d/%2$d</string>
+    <string name="next">SIGUIENTE</string>
+    <string name="back">VOLVER</string>
+    <string name="finish">FINALIZAR</string>
+    <string name="error_select_option">Debes seleccionar una opción</string>
+
+    <string name="q1">¿Cómo te sientes hoy?</string>
+    <string name="q2">¿Cómo ha sido tu ánimo esta mañana?</string>
+    <string name="q3">¿Cómo te sientes en general esta semana?</string>
+    <string name="enviar">ENVIAR</string>
+    <string name="volver_al_inicio">VOLVER AL INICIO</string>
+    <string name="code_label">Código: %1$s</string>
+    <string name="year_label">Año: %1$s</string>
+    <string name="sex_label">Sexo: %1$s</string>
 
 
     <string-array name="sex_options">
