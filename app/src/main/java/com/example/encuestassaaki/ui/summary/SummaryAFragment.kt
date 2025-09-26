@@ -1,6 +1,5 @@
 package com.example.encuestassaaki.ui.summary
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,31 +8,30 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import java.io.File
 import java.io.FileWriter
 
-class SummaryFragmentB : Fragment() {
+class SummaryAFragment : Fragment() {
 
     private var code: String? = null
     private var year: String? = null
     private var sex: String? = null
-    private var answers: ArrayList<String>? = null
+    private var answers: ArrayList<Int>? = null
 
     companion object {
         fun newInstance(
             code: String,
             year: String,
             sex: String,
-            answers: ArrayList<String>
-        ): SummaryFragmentB {
-            val fragment = SummaryFragmentB()
+            answers: ArrayList<Int>
+        ): SummaryAFragment {
+            val fragment = SummaryAFragment()
             val bundle = Bundle()
             bundle.putString("code", code)
             bundle.putString("year", year)
             bundle.putString("sex", sex)
-            bundle.putStringArrayList("answers", answers)
+            bundle.putIntegerArrayList("answers", answers)
             fragment.arguments = bundle
             return fragment
         }
@@ -45,7 +43,7 @@ class SummaryFragmentB : Fragment() {
             code = it.getString("code")
             year = it.getString("year")
             sex = it.getString("sex")
-            answers = it.getStringArrayList("answers")
+            answers = it.getIntegerArrayList("answers")
         }
     }
 
@@ -84,7 +82,7 @@ class SummaryFragmentB : Fragment() {
 
     private fun saveToCSV(): Boolean {
         return try {
-            val file = File(requireContext().getExternalFilesDir(null), "encuesta_b.csv")
+            val file = File(requireContext().getExternalFilesDir(null), "encuesta_a.csv")
             val isNew = !file.exists()
             val writer = FileWriter(file, true)
 

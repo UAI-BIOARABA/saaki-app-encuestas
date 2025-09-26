@@ -1,7 +1,5 @@
 package com.example.encuestassaaki.ui.login
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.addCallback
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.R
-import java.io.File
-import java.io.FileOutputStream
 
 class LoginFragment : Fragment() {
 
@@ -113,9 +107,6 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(), "No hay archivo para eliminar", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
 */
     }
 

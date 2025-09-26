@@ -1,4 +1,4 @@
-package com.example.encuestassaaki.ui.survey
+package com.example.encuestassaaki.ui.selection
 
 import android.content.Context
 import android.os.Bundle

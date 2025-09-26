@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.R
-import com.example.encuestassaaki.ui.summary.SummaryFragment
-import com.example.encuestassaaki.ui.summary.SummaryFragmentB
+import com.example.encuestassaaki.ui.summary.SummaryBFragment
 
 class SurveyBFragment : Fragment() {
 
@@ -93,7 +92,7 @@ class SurveyBFragment : Fragment() {
                 currentIndex++
                 loadQuestion()
             } else {
-                val fragment = SummaryFragmentB.newInstance(
+                val fragment = SummaryBFragment.newInstance(
                     code = codeUser,
                     year = yearUser,
                     sex = sexUser,

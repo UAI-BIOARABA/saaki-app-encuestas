@@ -1,17 +1,12 @@
 package com.example.encuestassaaki
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import com.example.encuestassaaki.ui.login.LoginFragment
 import com.example.encuestassaaki.ui.survey.SurveyAFragment
 import com.example.encuestassaaki.ui.survey.SurveyBFragment
-import com.example.encuestassaaki.ui.survey.SurveySelectionFragment
+import com.example.encuestassaaki.ui.selection.SurveySelectionFragment
 import com.example.encuestassaaki.ui.userinfo.UserInfoFragment
-import java.io.File
 
 class MainActivity : AppCompatActivity(), LoginFragment.LoginListener, SurveySelectionFragment.SurveySelectionListener, UserInfoFragment.UserInfoListener {
 

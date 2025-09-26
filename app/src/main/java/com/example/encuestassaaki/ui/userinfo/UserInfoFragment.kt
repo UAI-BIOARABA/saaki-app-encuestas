@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.R
-import com.example.encuestassaaki.ui.survey.SurveySelectionFragment
+import com.example.encuestassaaki.ui.selection.SurveySelectionFragment
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -142,7 +142,6 @@ class UserInfoFragment : Fragment() {
             goToSurveySelection()
         }
 
-
     }
 
     private fun goToSurveySelection() {
@@ -152,6 +151,5 @@ class UserInfoFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
-
 
 }
