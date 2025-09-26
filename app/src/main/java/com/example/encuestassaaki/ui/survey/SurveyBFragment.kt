@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.R
 import com.example.encuestassaaki.ui.summary.SummaryFragment
+import com.example.encuestassaaki.ui.summary.SummaryFragmentB
 
 class SurveyBFragment : Fragment() {
 
@@ -24,7 +25,7 @@ class SurveyBFragment : Fragment() {
     private lateinit var btnNext: Button
     private lateinit var btnBack: Button
 
-    private val answersText = ArrayList<String>()
+    private val answers = ArrayList<String>()
 
     companion object {
         private const val ARG_CODE = "code"
@@ -54,7 +55,6 @@ class SurveyBFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_survey_a, container, false)
-    // puedes usar el mismo layout que la encuesta A
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         txtQuestionNumber = view.findViewById(R.id.txt_question_number)
@@ -74,7 +74,7 @@ class SurveyBFragment : Fragment() {
             getString(R.string.qq8)
         )
 
-        answersText.apply { repeat(questions.size) { add("") } }
+        answers.apply { repeat(questions.size) { add("") } }
 
         btnBack.visibility = View.GONE
         loadQuestion()
@@ -87,12 +87,22 @@ class SurveyBFragment : Fragment() {
             }
 
             val selectedRb = radioGroup.findViewById<RadioButton>(selectedId)
-            answersText[currentIndex] = selectedRb.text.toString()
+            answers[currentIndex] = selectedRb.text.toString()
 
             if (currentIndex < questions.size - 1) {
                 currentIndex++
                 loadQuestion()
             } else {
+                val fragment = SummaryFragmentB.newInstance(
+                    code = codeUser,
+                    year = yearUser,
+                    sex = sexUser,
+                    answers = answers
+                )
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null)
+                    .commit()
             }
         }
 
@@ -129,7 +139,7 @@ class SurveyBFragment : Fragment() {
         }
 
         // mantener selección si ya estaba
-        val prevAnswer = answersText[currentIndex]
+        val prevAnswer = answers[currentIndex]
         if (prevAnswer.isNotEmpty()) {
             for (j in 0 until radioGroup.childCount) {
                 val rb = radioGroup.getChildAt(j) as RadioButton

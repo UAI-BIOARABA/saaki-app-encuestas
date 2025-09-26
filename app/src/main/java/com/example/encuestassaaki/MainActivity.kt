@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.encuestassaaki.ui.login.LoginFragment
 import com.example.encuestassaaki.ui.survey.SurveyAFragment
+import com.example.encuestassaaki.ui.survey.SurveyBFragment
 import com.example.encuestassaaki.ui.survey.SurveySelectionFragment
 import com.example.encuestassaaki.ui.userinfo.UserInfoFragment
 import java.io.File
@@ -53,7 +54,12 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginListener, SurveySel
                 .addToBackStack(null)
                 .commit()
         }
+        if (type == "B") {
+            val fragment = SurveyBFragment.newInstance(codeUser, yearUser, sexUser)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
     }
-
-
 }

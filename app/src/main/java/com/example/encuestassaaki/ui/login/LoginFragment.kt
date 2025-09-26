@@ -53,7 +53,7 @@ class LoginFragment : Fragment() {
                 listener?.onLogin(code)
             }
         }
-
+/*
         // Botón compartir usuarios
         val botonUsuarios: Button? = view.findViewById(R.id.botonUsuarios)
         botonUsuarios?.setOnClickListener {
@@ -116,6 +116,7 @@ class LoginFragment : Fragment() {
 
 
 
-
+*/
     }
+
 }
