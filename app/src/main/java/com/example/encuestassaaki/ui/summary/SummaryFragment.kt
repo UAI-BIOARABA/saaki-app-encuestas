@@ -1,5 +1,6 @@
 package com.example.encuestassaaki.ui.summary
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import java.io.File
 import java.io.FileWriter
@@ -57,7 +59,6 @@ class SummaryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val textSummary: TextView = view.findViewById(R.id.text_summary)
         val btnSend: Button = view.findViewById(R.id.btn_send)
-        val btnBack: Button = view.findViewById(R.id.btn_back)
 
         // Mostrar resumen en TextView
         val sb = StringBuilder()
@@ -72,17 +73,17 @@ class SummaryFragment : Fragment() {
 
         // Botón ENVIAR
         btnSend.setOnClickListener {
-            saveToCSV()
+            if (saveToCSV()) {
+                requireActivity().supportFragmentManager.popBackStack(
+                    null,
+                    androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
         }
 
-        // Botón VOLVER AL INICIO
-        btnBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack(null, 0)
-        }
     }
 
-    private fun saveToCSV() {
-        try {
+    private fun saveToCSV(): Boolean {
+        return try {
             val file = File(requireContext().getExternalFilesDir(null), "encuesta_a.csv")
             val isNew = !file.exists()
             val writer = FileWriter(file, true)
@@ -106,9 +107,11 @@ class SummaryFragment : Fragment() {
             writer.close()
 
             Toast.makeText(requireContext(), "Respuestas guardadas", Toast.LENGTH_SHORT).show()
+            true
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(requireContext(), "Error al guardar respuestas", Toast.LENGTH_SHORT).show()
+            false
         }
     }
 }

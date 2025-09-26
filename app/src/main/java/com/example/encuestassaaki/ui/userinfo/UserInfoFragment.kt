@@ -62,7 +62,8 @@ class UserInfoFragment : Fragment() {
         spinnerSex.adapter = adapter
 
         // Archivo CSV de usuarios
-        val file = File(requireContext().filesDir, "usuarios.csv")
+        val file = File(requireContext().getExternalFilesDir(null), "usuarios.csv")
+
         var userExists = false
 
         // Revisar si el código ya existe
@@ -90,7 +91,6 @@ class UserInfoFragment : Fragment() {
             val sex = spinnerSex.selectedItem.toString()
 
             if (!userExists) {
-                // Solo validamos y guardamos si es usuario nuevo
                 val lines = mutableListOf<String>()
                 var updated = false
 
@@ -104,6 +104,9 @@ class UserInfoFragment : Fragment() {
                             lines.add(line)
                         }
                     }
+                } else {
+                    // 🟢 Cabecera cuando el archivo aún no existe
+                    lines.add("codigo,año,sexo")
                 }
 
                 if (!updated) {
@@ -118,6 +121,7 @@ class UserInfoFragment : Fragment() {
             // En ambos casos (nuevo o existente) pasamos a la siguiente pantalla
             goToSurveySelection()
         }
+
 
     }
 
