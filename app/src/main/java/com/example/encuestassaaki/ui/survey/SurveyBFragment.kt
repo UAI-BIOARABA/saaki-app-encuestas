@@ -9,14 +9,12 @@ import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.R
 import com.example.encuestassaaki.ui.summary.SummaryFragment
 
-class SurveyAFragment : Fragment() {
+class SurveyBFragment : Fragment() {
 
     private lateinit var codeUser: String
     private lateinit var yearUser: String
     private lateinit var sexUser: String
     private lateinit var questions: List<String>
-
-
 
     private var currentIndex = 0
 
@@ -25,14 +23,16 @@ class SurveyAFragment : Fragment() {
     private lateinit var radioGroup: RadioGroup
     private lateinit var btnNext: Button
     private lateinit var btnBack: Button
-    private val answers = ArrayList<Int>()
+
+    private val answersText = ArrayList<String>()
+
     companion object {
         private const val ARG_CODE = "code"
         private const val ARG_YEAR = "year"
         private const val ARG_SEX = "sex"
 
         fun newInstance(code: String, year: String, sex: String) =
-            SurveyAFragment().apply {
+            SurveyBFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_CODE, code)
                     putString(ARG_YEAR, year)
@@ -54,6 +54,7 @@ class SurveyAFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_survey_a, container, false)
+    // puedes usar el mismo layout que la encuesta A
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         txtQuestionNumber = view.findViewById(R.id.txt_question_number)
@@ -61,15 +62,19 @@ class SurveyAFragment : Fragment() {
         radioGroup = view.findViewById(R.id.radio_group)
         btnNext = view.findViewById(R.id.btn_next)
         btnBack = view.findViewById(R.id.btn_back)
-        questions = listOf(
-                getString(R.string.q1),
-                getString(R.string.q2),
-                getString(R.string.q3)
-            )
 
-        answers.apply {
-            repeat(questions.size) { add(0) }
-        }
+        questions = listOf(
+            getString(R.string.qq1),
+            getString(R.string.qq2),
+            getString(R.string.qq3),
+            getString(R.string.qq4),
+            getString(R.string.qq5),
+            getString(R.string.qq6),
+            getString(R.string.qq7),
+            getString(R.string.qq8)
+        )
+
+        answersText.apply { repeat(questions.size) { add("") } }
 
         btnBack.visibility = View.GONE
         loadQuestion()
@@ -81,23 +86,13 @@ class SurveyAFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            val answer = radioGroup.indexOfChild(radioGroup.findViewById(selectedId)) + 1
-            answers[currentIndex] = answer
+            val selectedRb = radioGroup.findViewById<RadioButton>(selectedId)
+            answersText[currentIndex] = selectedRb.text.toString()
 
             if (currentIndex < questions.size - 1) {
                 currentIndex++
                 loadQuestion()
             } else {
-                val fragment = SummaryFragment.newInstance(
-                    code = codeUser,
-                    year = yearUser,
-                    sex = sexUser,
-                    answers = answers
-                )
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .addToBackStack(null)
-                    .commit()
             }
         }
 
@@ -116,15 +111,15 @@ class SurveyAFragment : Fragment() {
         radioGroup.removeAllViews()
         radioGroup.clearCheck()
 
-        val emoticons = listOf("😢","😟","😐","🙂","😄")
+        val options = listOf("Sí", "Más o menos", "No", "No responder")
 
-        for (i in emoticons.indices) {
+        for (i in options.indices) {
             val rb = RadioButton(requireContext()).apply {
-                layoutParams = RadioGroup.LayoutParams(140.dp, 140.dp).apply {
-                    setMargins(32.dp, 32.dp, 32.dp, 32.dp) // margenes
+                layoutParams = RadioGroup.LayoutParams(200.dp, 120.dp).apply {
+                    setMargins(32.dp, 32.dp, 32.dp, 32.dp)
                 }
-                text = emoticons[i]
-                textSize = 40f
+                text = options[i]
+                textSize = 20f
                 gravity = android.view.Gravity.CENTER
                 buttonDrawable = null
                 setBackgroundResource(R.drawable.radio_selector)
@@ -133,11 +128,16 @@ class SurveyAFragment : Fragment() {
             radioGroup.addView(rb)
         }
 
-
         // mantener selección si ya estaba
-        val prevAnswer = answers[currentIndex]
-        if (prevAnswer != 0) {
-            (radioGroup.getChildAt(prevAnswer - 1) as RadioButton).isChecked = true
+        val prevAnswer = answersText[currentIndex]
+        if (prevAnswer.isNotEmpty()) {
+            for (j in 0 until radioGroup.childCount) {
+                val rb = radioGroup.getChildAt(j) as RadioButton
+                if (rb.text == prevAnswer) {
+                    rb.isChecked = true
+                    break
+                }
+            }
         }
 
         btnBack.visibility = if (currentIndex == 0) View.GONE else View.VISIBLE
@@ -146,5 +146,4 @@ class SurveyAFragment : Fragment() {
 
     // Helper para convertir dp a px
     private val Int.dp: Int get() = (this * resources.displayMetrics.density).toInt()
-
 }

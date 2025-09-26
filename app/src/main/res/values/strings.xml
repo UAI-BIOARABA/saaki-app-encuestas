@@ -38,6 +38,16 @@
     <string name="code_label">Código: %1$s</string>
     <string name="year_label">Año: %1$s</string>
     <string name="sex_label">Sexo: %1$s</string>
+    <string name="siguiente">SIGUIENTE</string>
+    <string name="volver">VOLVER</string>
+    <string name="qq1">¿Te parece que Saaki tiene aspecto humano?</string>
+    <string name="qq2">¿Saaki te ha parecido vivaz?</string>
+    <string name="qq3">¿Te ha gustado Saaki?</string>
+    <string name="qq4">¿Saaki te ha parecido agradable?</string>
+    <string name="qq5">¿Saaki te ha parecido bonito?</string>
+    <string name="qq6">¿Crees que Saaki es inteligente?</string>
+    <string name="qq7">¿Te has sentido relajado durante la sesión?</string>
+    <string name="qq8">¿Te has sentido sorprendido durante la sesión?</string>
 
 
     <string-array name="sex_options">

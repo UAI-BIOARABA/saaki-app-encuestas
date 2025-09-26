@@ -1,5 +1,6 @@
 package com.example.encuestassaaki.ui.userinfo
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,23 @@ class UserInfoFragment : Fragment() {
             return fragment
         }
     }
+
+    interface UserInfoListener {
+        fun onUserInfoSaved(code: String, year: String, sex: String)
+    }
+
+    private var listener: UserInfoListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is UserInfoListener) listener = context
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,7 +136,9 @@ class UserInfoFragment : Fragment() {
                 Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT).show()
             }
 
-            // En ambos casos (nuevo o existente) pasamos a la siguiente pantalla
+            // Notificar a MainActivity
+            listener?.onUserInfoSaved(code ?: "", year, sex)
+
             goToSurveySelection()
         }
 

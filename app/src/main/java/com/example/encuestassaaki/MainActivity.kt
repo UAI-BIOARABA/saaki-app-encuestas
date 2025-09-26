@@ -12,11 +12,17 @@ import com.example.encuestassaaki.ui.survey.SurveySelectionFragment
 import com.example.encuestassaaki.ui.userinfo.UserInfoFragment
 import java.io.File
 
-class MainActivity : AppCompatActivity(), LoginFragment.LoginListener, SurveySelectionFragment.SurveySelectionListener {
+class MainActivity : AppCompatActivity(), LoginFragment.LoginListener, SurveySelectionFragment.SurveySelectionListener, UserInfoFragment.UserInfoListener {
 
     var codeUser: String = ""
     var yearUser: String = ""
     var sexUser: String = ""
+
+    override fun onUserInfoSaved(code: String, year: String, sex: String) {
+        codeUser = code
+        yearUser = year
+        sexUser = sex
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
