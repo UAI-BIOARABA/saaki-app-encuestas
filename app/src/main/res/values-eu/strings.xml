@@ -48,6 +48,11 @@
     <string name="qq6">¿Crees que Saaki es inteligente?</string>
     <string name="qq7">¿Te has sentido relajado durante la sesión?</string>
     <string name="qq8">¿Te has sentido sorprendido durante la sesión?</string>
+    <string name="one">Muy triste</string>
+    <string name="two">Triste</string>
+    <string name="three">Normal</string>
+    <string name="four">Contento</string>
+    <string name="five">Muy contento</string>
 
 
     <string-array name="sex_options">

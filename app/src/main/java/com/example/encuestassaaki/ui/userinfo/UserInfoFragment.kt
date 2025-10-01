@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import com.example.encuestassaaki.ui.selection.SurveySelectionFragment
 import java.io.File
@@ -56,6 +57,11 @@ class UserInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_userinfo, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? MainActivity)?.speak("Ingresa tus datos")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -123,7 +129,7 @@ class UserInfoFragment : Fragment() {
                         }
                     }
                 } else {
-                    // 🟢 Cabecera cuando el archivo aún no existe
+                    // Cabecera cuando el archivo aún no existe
                     lines.add("codigo,año,sexo")
                 }
 

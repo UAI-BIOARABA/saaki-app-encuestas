@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 
 class SurveySelectionFragment : Fragment() {
@@ -25,6 +26,11 @@ class SurveySelectionFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         listener = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? MainActivity)?.speak("Por favor, selecciona una encuesta")
     }
 
     override fun onCreateView(

@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 
 class LoginFragment : Fragment() {
@@ -33,6 +34,11 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? MainActivity)?.speak("Bienvenido, por favor ingresa tu código de usuario")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import java.io.File
 import java.io.FileWriter
@@ -18,7 +19,7 @@ class SummaryBFragment : Fragment() {
     private var year: String? = null
     private var sex: String? = null
     private var answers: ArrayList<String>? = null
-
+    private lateinit var questions: List<String>
     companion object {
         fun newInstance(
             code: String,
@@ -58,14 +59,26 @@ class SummaryBFragment : Fragment() {
         val textSummary: TextView = view.findViewById(R.id.text_summary)
         val btnSend: Button = view.findViewById(R.id.btn_send)
 
+        questions = listOf(
+            getString(R.string.qq1),
+            getString(R.string.qq2),
+            getString(R.string.qq3),
+            getString(R.string.qq4),
+            getString(R.string.qq5),
+            getString(R.string.qq6),
+            getString(R.string.qq7),
+            getString(R.string.qq8)
+        )
+
         // Mostrar resumen en TextView
         val sb = StringBuilder()
         sb.append("Código: $code\n")
         sb.append("Año: $year\n")
         sb.append("Sexo: $sex\n")
-        sb.append("Respuestas:\n")
+        sb.append("Resumen:\n\n")
         answers?.forEachIndexed { index, ans ->
-            sb.append("Pregunta ${index + 1}: $ans\n")
+            val question = if (index < questions.size) questions[index] else "Pregunta ${index + 1}"
+            sb.append("$question\nRespuesta: $ans\n\n")
         }
         textSummary.text = sb.toString()
 
@@ -78,6 +91,11 @@ class SummaryBFragment : Fragment() {
             }
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? MainActivity)?.speak("Este es el resumen de tus preguntas")
     }
 
     private fun saveToCSV(): Boolean {

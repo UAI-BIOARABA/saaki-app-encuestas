@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import com.example.encuestassaaki.ui.summary.SummaryAFragment
 
@@ -112,6 +113,8 @@ class SurveyAFragment : Fragment() {
     private fun loadQuestion() {
         txtQuestionNumber.text = getString(R.string.question_number, currentIndex + 1, questions.size)
         txtQuestion.text = questions[currentIndex]
+
+        (activity as? MainActivity)?.speak(questions[currentIndex])
 
         radioGroup.removeAllViews()
         radioGroup.clearCheck()
