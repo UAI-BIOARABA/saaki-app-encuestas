@@ -59,6 +59,10 @@
     <string name="ttssurvey">Mesedez, hautatu inkesta bat</string>
     <string name="ttssummary">Hau da zure galderen laburpena</string>
 
+    <string name="yes">Bai</string>
+    <string name="moreorless">Gutxi gorabehera</string>
+    <string name="no">Ez</string>
+    <string name="answer">Ez erantzun</string>
 
     <string-array name="sex_options">
         <item>Gizonezkoa</item>

@@ -123,7 +123,8 @@ class SurveyBFragment : Fragment() {
         radioGroup.removeAllViews()
         radioGroup.clearCheck()
 
-        val options = listOf("Sí", "Más o menos", "No", "No responder")
+        val options = listOf(getString(R.string.yes), getString(R.string.moreorless),
+            getString(R.string.no), getString(R.string.answer))
 
         for (i in options.indices) {
             val rb = RadioButton(requireContext()).apply {

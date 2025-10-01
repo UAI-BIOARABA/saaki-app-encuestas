@@ -1,5 +1,6 @@
 package com.example.encuestassaaki.ui.summary
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import java.io.File
 import java.io.FileWriter
+import java.util.Locale
 
 class SummaryBFragment : Fragment() {
 
@@ -116,7 +118,15 @@ class SummaryBFragment : Fragment() {
             val fecha = java.text.SimpleDateFormat("yyyy-MM-dd").format(java.util.Date())
             writer.append("$code,$year,$sex,$fecha")
             answers?.forEach { ans ->
-                writer.append(",$ans")
+                // Si ans viene de getString(R.string.xxx), buscamos el id y lo convertimos a español
+                val spanishAns = when(ans) {
+                    getString(R.string.yes) -> getSpanishString(R.string.yes)
+                    getString(R.string.moreorless) -> getSpanishString(R.string.moreorless)
+                    getString(R.string.no) -> getSpanishString(R.string.no)
+                    getString(R.string.answer) -> getSpanishString(R.string.answer)
+                    else -> ans
+                }
+                writer.append(",$spanishAns")
             }
             writer.append("\n")
             writer.flush()
@@ -130,4 +140,12 @@ class SummaryBFragment : Fragment() {
             false
         }
     }
+    private fun getSpanishString(resId: Int): String {
+        val spanishConfig = resources.configuration
+        val config = Configuration(spanishConfig)
+        config.setLocale(Locale("es", "ES"))
+        val spanishContext = requireContext().createConfigurationContext(config)
+        return spanishContext.getString(resId)
+    }
+
 }

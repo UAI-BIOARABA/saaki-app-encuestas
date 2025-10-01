@@ -1,5 +1,6 @@
 package com.example.encuestassaaki.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import com.example.encuestassaaki.utils.LocaleHelper
+import java.io.File
 
 class LoginFragment : Fragment() {
 
@@ -49,7 +52,8 @@ class LoginFragment : Fragment() {
         btnLogin.setOnClickListener {
             val code = editCode.text.toString().trim()
             if (code.isEmpty()) {
-                Toast.makeText(requireContext(), R.string.error_empty_code, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.error_empty_code, Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 listener?.onLogin(code)
             }
@@ -69,9 +73,8 @@ class LoginFragment : Fragment() {
             requireActivity().recreate() // recarga toda la UI en euskera
         }
 
-    }
 
-    /*
+        /*
             // Botón compartir usuarios
             val botonUsuarios: Button? = view.findViewById(R.id.botonUsuarios)
             botonUsuarios?.setOnClickListener {
@@ -95,42 +98,46 @@ class LoginFragment : Fragment() {
                 }
             }
 
-            // Botón compartir respuestas
-            val botonCompartir: Button? = view.findViewById(R.id.botonCompartir)
-            botonCompartir?.setOnClickListener {
-                val file = File(requireContext().getExternalFilesDir(null), "encuesta_a.csv")
-                if (file.exists()) {
-                    val uri = FileProvider.getUriForFile(
-                        requireContext(),
-                        "${requireContext().packageName}.provider",
-                        file
-                    )
+        // Botón compartir respuestas
+        val botonCompartir: Button? = view.findViewById(R.id.botonCompartir)
+        botonCompartir?.setOnClickListener {
+            val file = File(requireContext().getExternalFilesDir(null), "encuesta_b.csv")
+            if (file.exists()) {
+                val uri = FileProvider.getUriForFile(
+                    requireContext(),
+                    "${requireContext().packageName}.provider",
+                    file
+                )
 
-                    val intent = Intent(Intent.ACTION_SEND).apply {
-                        type = "text/csv"
-                        putExtra(Intent.EXTRA_STREAM, uri)
-                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                    }
-
-                    startActivity(Intent.createChooser(intent, "Compartir respuestas"))
-                } else {
-                    Toast.makeText(requireContext(), "No hay respuestas guardadas todavía", Toast.LENGTH_SHORT).show()
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/csv"
+                    putExtra(Intent.EXTRA_STREAM, uri)
+                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                 }
-            }
 
-            val botonLimpiar = view.findViewById<Button>(R.id.botonLimpiar)
-            botonLimpiar?.setOnClickListener {
-                val file = File(requireContext().getExternalFilesDir(null), "encuesta_a.csv")
-                if (file.exists()) {
-                    if (file.delete()) {
-                        Toast.makeText(requireContext(), "Archivo eliminado correctamente", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(requireContext(), "No se pudo eliminar el archivo", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    Toast.makeText(requireContext(), "No hay archivo para eliminar", Toast.LENGTH_SHORT).show()
-                }
+                startActivity(Intent.createChooser(intent, "Compartir respuestas"))
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "No hay respuestas guardadas todavía",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-    */
+        }
+
+        val botonLimpiar = view.findViewById<Button>(R.id.botonLimpiar)
+        botonLimpiar?.setOnClickListener {
+            val file = File(requireContext().getExternalFilesDir(null), "usuarios.csv")
+            if (file.exists()) {
+                if (file.delete()) {
+                    Toast.makeText(requireContext(), "Archivo eliminado correctamente", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "No se pudo eliminar el archivo", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(requireContext(), "No hay archivo para eliminar", Toast.LENGTH_SHORT).show()
+            }
+        }*/
+    }
 
 }
