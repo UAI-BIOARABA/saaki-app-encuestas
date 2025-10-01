@@ -132,11 +132,13 @@ class SurveyBFragment : Fragment() {
                     setMargins(32.dp, 32.dp, 32.dp, 32.dp)
                 }
                 text = options[i]
-                textSize = 20f
+                textSize = 25f
+                setTypeface(typeface, android.graphics.Typeface.BOLD)  // negrita
                 gravity = android.view.Gravity.CENTER
                 buttonDrawable = null
                 setBackgroundResource(R.drawable.radio_selector)
                 setTextColor(resources.getColorStateList(R.color.selector_text, null))
+
             }
             radioGroup.addView(rb)
         }

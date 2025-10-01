@@ -76,8 +76,8 @@ class SummaryBFragment : Fragment() {
         val sb = StringBuilder()
         sb.append("Código: $code\n")
         sb.append("Año: $year\n")
-        sb.append("Sexo: $sex\n")
-        sb.append("Resumen:\n\n")
+        sb.append("Sexo: $sex\n\n")
+        sb.append("RESUMEN\n")
         answers?.forEachIndexed { index, ans ->
             val question = if (index < questions.size) questions[index] else "Pregunta ${index + 1}"
             sb.append("$question\nRespuesta: $ans\n\n")

@@ -119,19 +119,32 @@ class SurveyAFragment : Fragment() {
         radioGroup.removeAllViews()
         radioGroup.clearCheck()
 
-        val emoticons = listOf("😢","😟","😐","🙂","😄")
+        val images = listOf(
+            R.drawable.muy_triste,
+            R.drawable.triste,
+            R.drawable.normal,
+            R.drawable.contento,
+            R.drawable.muy_contento
+        )
 
-        for (i in emoticons.indices) {
+        for (i in images.indices) {
             val rb = RadioButton(requireContext()).apply {
                 layoutParams = RadioGroup.LayoutParams(140.dp, 140.dp).apply {
-                    setMargins(32.dp, 32.dp, 32.dp, 32.dp) // margenes
+                    setMargins(32.dp, 32.dp, 32.dp, 32.dp)
                 }
-                text = emoticons[i]
-                textSize = 40f
-                gravity = android.view.Gravity.CENTER
+                text = ""
                 buttonDrawable = null
                 setBackgroundResource(R.drawable.radio_selector)
-                setTextColor(resources.getColorStateList(R.color.selector_text, null))
+                gravity = android.view.Gravity.CENTER
+
+                val drawable = resources.getDrawable(images[i], null)
+                val size = 80.dp
+                drawable.setBounds(0, 0, size, size)
+
+                // poner la imagen centrada usando padding
+                setPadding(0, 32.dp, 0, 32.dp)
+                setCompoundDrawables(null, drawable, null, null)
+                compoundDrawablePadding = 0
             }
             radioGroup.addView(rb)
         }
