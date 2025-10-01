@@ -1,63 +1,68 @@
 <resources>
-    <string name="app_name">Encuestas Saaki</string>
-    <string name="login_title">INTRODUCIR CÓDIGO</string>
-    <string name="login_hint">Código</string>
-    <string name="btn_login">Aceptar</string>
-    <string name="error_empty_code">Por favor, introduce un código</string>
-    <string name="code_entered">Código introducido: %1$s</string>
-    <string name="enter_year">Introduce tu año de nacimiento:</string>
-    <string name="year_of_birth">Año de nacimiento</string>
-    <string name="gender">Seleccionar género:</string>
-    <string name="male">Masculino</string>
-    <string name="female">Femenino</string>
-    <string name="today_date">Fecha: %1$s</string>
-    <string name="save">SELECCIONAR ENCUESTA</string>
-    <string name="error_fill_all">Por favor, completa todos los campos</string>
-    <string name="data_saved">Datos guardados correctamente</string>
-    <string name="current_date">Fecha actual: %1$s</string>
-    <string name="current_date_placeholder">Fecha actual:</string>
-    <string name="user_code">Código: %1$s</string>
-    <string name="user_code_placeholder">Código:</string>
-    <string name="hint_year">Año de nacimiento</string>
-    <string name="error_empty_year">Introduce el año de nacimiento</string>
-    <string name="survey_selection">SELECCIONAR ENCUESTA</string>
-    <string name="survey_a">Encuesta A</string>
-    <string name="survey_b">Encuesta B</string>
-    <string name="survey_a_title">Encuesta A</string>
-    <string name="question_number">PREGUNTA %1$d/%2$d</string>
-    <string name="next">SIGUIENTE</string>
-    <string name="back">VOLVER</string>
-    <string name="finish">FINALIZAR</string>
-    <string name="error_select_option">Debes seleccionar una opción</string>
+    <string name="app_name">Saaki Inkestak</string>
+    <string name="login_title">SARTU KODEA</string>
+    <string name="login_hint">Kodea</string>
+    <string name="btn_login">Onartu</string>
+    <string name="error_empty_code">Mesedez, sartu kode bat</string>
+    <string name="code_entered">Sartutako kodea: %1$s</string>
+    <string name="enter_year">Sartu zure jaiotze-urtea:</string>
+    <string name="year_of_birth">Jaiotze-urtea</string>
+    <string name="gender">Hautatu generoa:</string>
+    <string name="male">Gizonezkoa</string>
+    <string name="female">Emakumezkoa</string>
+    <string name="today_date">Data: %1$s</string>
+    <string name="save">INKESTA HAUTATU</string>
+    <string name="error_fill_all">Mesedez, bete eremu guztiak</string>
+    <string name="data_saved">Datuak ondo gorde dira</string>
+    <string name="current_date">Gaurko data: %1$s</string>
+    <string name="current_date_placeholder">Gaurko data:</string>
+    <string name="user_code">Kodea: %1$s</string>
+    <string name="user_code_placeholder">Kodea:</string>
+    <string name="hint_year">Jaiotze-urtea</string>
+    <string name="error_empty_year">Sartu jaiotze-urtea</string>
+    <string name="survey_selection">INKESTA HAUTATU</string>
+    <string name="survey_a">A Inkesta</string>
+    <string name="survey_b">B Inkesta</string>
+    <string name="survey_a_title">A Inkesta</string>
+    <string name="question_number">GALDERA %1$d/%2$d</string>
+    <string name="next">HURRENGOA</string>
+    <string name="back">ATZERA</string>
+    <string name="finish">AMAITU</string>
+    <string name="error_select_option">Aukera bat hautatu behar duzu</string>
 
-    <string name="q1">¿Cómo te sientes hoy?</string>
-    <string name="q2">¿Cómo ha sido tu ánimo esta mañana?</string>
-    <string name="q3">¿Cómo te sientes en general esta semana?</string>
-    <string name="enviar">ENVIAR</string>
-    <string name="volver_al_inicio">VOLVER AL INICIO</string>
-    <string name="code_label">Código: %1$s</string>
-    <string name="year_label">Año: %1$s</string>
-    <string name="sex_label">Sexo: %1$s</string>
-    <string name="siguiente">SIGUIENTE</string>
-    <string name="volver">VOLVER</string>
-    <string name="qq1">¿Te parece que Saaki tiene aspecto humano?</string>
-    <string name="qq2">¿Saaki te ha parecido vivaz?</string>
-    <string name="qq3">¿Te ha gustado Saaki?</string>
-    <string name="qq4">¿Saaki te ha parecido agradable?</string>
-    <string name="qq5">¿Saaki te ha parecido bonito?</string>
-    <string name="qq6">¿Crees que Saaki es inteligente?</string>
-    <string name="qq7">¿Te has sentido relajado durante la sesión?</string>
-    <string name="qq8">¿Te has sentido sorprendido durante la sesión?</string>
-    <string name="one">Muy triste</string>
+    <string name="q1">Nola sentitzen zara gaur?</string>
+    <string name="q2">Nola izan da zure animoa goizean?</string>
+    <string name="q3">Oro har, nola sentitzen zara aste honetan?</string>
+    <string name="enviar">BIDALI</string>
+    <string name="volver_al_inicio">HASIERARA ITZULI</string>
+    <string name="code_label">Kodea: %1$s</string>
+    <string name="year_label">Urtea: %1$s</string>
+    <string name="sex_label">Sexua: %1$s</string>
+    <string name="siguiente">HURRENGOA</string>
+    <string name="volver">ATZERA</string>
+    <string name="qq1">Saaki giza itxura duen iruditu zaizu?</string>
+    <string name="qq2">Saaki bizia iruditu zaizu?</string>
+    <string name="qq3">Saaki gustatu zaizu?</string>
+    <string name="qq4">Saaki atsegina iruditu zaizu?</string>
+    <string name="qq5">Saaki polita iruditu zaizu?</string>
+    <string name="qq6">Saaki adimentsua dela uste duzu?</string>
+    <string name="qq7">Saioan zehar lasai sentitu zara?</string>
+    <string name="qq8">Saioan zehar harrituta sentitu zara?</string>
+    <string name="one">Oso triste</string>
     <string name="two">Triste</string>
-    <string name="three">Normal</string>
-    <string name="four">Contento</string>
-    <string name="five">Muy contento</string>
+    <string name="three">Normala</string>
+    <string name="four">Pozik</string>
+    <string name="five">Oso pozik</string>
+
+    <string name="ttswelcome">Ongietorri, mesedez sartu zure erabiltzaile kodea</string>
+    <string name="ttsdata">Sartu zure datuak</string>
+    <string name="ttssurvey">Mesedez, hautatu inkesta bat</string>
+    <string name="ttssummary">Hau da zure galderen laburpena</string>
 
 
     <string-array name="sex_options">
-        <item>Masculino</item>
-        <item>Femenino</item>
+        <item>Gizonezkoa</item>
+        <item>Emakumezkoa</item>
     </string-array>
 
 </resources>

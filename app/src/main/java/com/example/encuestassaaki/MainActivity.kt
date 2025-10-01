@@ -1,5 +1,6 @@
 package com.example.encuestassaaki
 
+import android.content.Context
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import com.example.encuestassaaki.ui.selection.SurveySelectionFragment
 import com.example.encuestassaaki.ui.survey.SurveyAFragment
 import com.example.encuestassaaki.ui.survey.SurveyBFragment
 import com.example.encuestassaaki.ui.userinfo.UserInfoFragment
+import com.example.encuestassaaki.utils.LocaleHelper
 import java.util.Locale
 
 class MainActivity : AppCompatActivity(),
@@ -23,21 +25,18 @@ class MainActivity : AppCompatActivity(),
     private var isTtsReady = false
     private var pendingText: String? = null
 
+    override fun attachBaseContext(newBase: Context) {
+        val lang = LocaleHelper.loadLocale(newBase)
+        val context = LocaleHelper.setLocale(newBase, lang)
+        super.attachBaseContext(context)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Inicializar TTS
-        tts = TextToSpeech(this) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                val result = tts?.setLanguage(Locale("es", "ES"))
-                if (result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED) {
-                    isTtsReady = true
-                    pendingText?.let { speak(it) } // Reproducir lo que estaba pendiente
-                    pendingText = null
-                }
-            }
-        }
+        // Inicializar TTS con idioma actual de la app
+        initTTS(LocaleHelper.loadLocale(this))
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -46,12 +45,37 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    // Metodo público para que los fragments puedan hablar
+    private fun initTTS(langCode: String) {
+        val locale = when(langCode) {
+            "eu" -> Locale("eu") // Euskera
+            else -> Locale("es", "ES") // Español por defecto
+        }
+
+        tts = TextToSpeech(this) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                // Verificar si el idioma está disponible
+                val available = tts?.isLanguageAvailable(locale)
+                val langToUse = if (available == TextToSpeech.LANG_AVAILABLE || available == TextToSpeech.LANG_COUNTRY_AVAILABLE) {
+                    locale
+                } else {
+                    Locale("es", "ES") // Fallback a español
+                }
+
+                val result = tts?.setLanguage(langToUse)
+                isTtsReady = result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED
+
+                pendingText?.let { speak(it) } // Decir lo pendiente
+                pendingText = null
+            }
+        }
+    }
+
+    // Método público para que los fragments puedan hablar
     fun speak(text: String) {
         if (isTtsReady) {
             tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
         } else {
-            pendingText = text // 🔹 Guardar para decirlo cuando TTS esté listo
+            pendingText = text
         }
     }
 
@@ -61,6 +85,7 @@ class MainActivity : AppCompatActivity(),
         super.onDestroy()
     }
 
+    // ====================== Fragments Listeners ======================
     override fun onUserInfoSaved(code: String, year: String, sex: String) {
         codeUser = code
         yearUser = year
@@ -76,17 +101,14 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onSurveySelected(type: String) {
-        if (type == "A") {
-            val fragment = SurveyAFragment.newInstance(codeUser, yearUser, sexUser)
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit()
+        val fragment = when(type) {
+            "A" -> SurveyAFragment.newInstance(codeUser, yearUser, sexUser)
+            "B" -> SurveyBFragment.newInstance(codeUser, yearUser, sexUser)
+            else -> null
         }
-        if (type == "B") {
-            val fragment = SurveyBFragment.newInstance(codeUser, yearUser, sexUser)
+        fragment?.let {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
+                .replace(R.id.fragment_container, it)
                 .addToBackStack(null)
                 .commit()
         }

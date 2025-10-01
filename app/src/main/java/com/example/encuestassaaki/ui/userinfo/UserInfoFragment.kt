@@ -61,7 +61,7 @@ class UserInfoFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as? MainActivity)?.speak("Ingresa tus datos")
+        (activity as? MainActivity)?.speak(getString(R.string.ttsdata))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -30,7 +30,7 @@ class SurveySelectionFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as? MainActivity)?.speak("Por favor, selecciona una encuesta")
+        (activity as? MainActivity)?.speak(getString(R.string.ttssurvey))
     }
 
     override fun onCreateView(

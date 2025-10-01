@@ -102,7 +102,7 @@ class SummaryAFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as? MainActivity)?.speak("Este es el resumen de tus preguntas")
+        (activity as? MainActivity)?.speak(getString(R.string.ttssummary))
     }
 
     private fun saveToCSV(): Boolean {

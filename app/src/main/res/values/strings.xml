@@ -54,6 +54,10 @@
     <string name="four">Contento</string>
     <string name="five">Muy contento</string>
 
+    <string name="ttswelcome">Bienvenido, por favor ingresa tu código de usuario</string>
+    <string name="ttsdata">Introduce tus datos</string>
+    <string name="ttssurvey">Por favor, selecciona una encuesta</string>
+    <string name="ttssummary">Este es el resumen de tus preguntas</string>
 
     <string-array name="sex_options">
         <item>Masculino</item>

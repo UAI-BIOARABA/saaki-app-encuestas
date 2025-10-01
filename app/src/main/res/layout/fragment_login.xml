@@ -6,6 +6,38 @@
     android:orientation="vertical"
     android:padding="24dp">
 
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="54dp">
+
+        <Button
+            android:id="@+id/btn_spanish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Español"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:background="@drawable/rounded_button" />
+
+        <Button
+            android:id="@+id/btn_euskera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Euskara"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_marginStart="24dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:background="@drawable/rounded_button" />
+    </LinearLayout>
+
+
     <TextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
