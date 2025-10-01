@@ -3,6 +3,7 @@
     <string name="login_title">SARTU KODEA</string>
     <string name="login_hint">Kodea</string>
     <string name="btn_login">Onartu</string>
+    <string name="lang_title">HIZKUNTZA</string>
     <string name="error_empty_code">Mesedez, sartu kode bat</string>
     <string name="code_entered">Sartutako kodea: %1$s</string>
     <string name="enter_year">Sartu zure jaiotze-urtea:</string>
@@ -21,8 +22,8 @@
     <string name="hint_year">Jaiotze-urtea</string>
     <string name="error_empty_year">Sartu jaiotze-urtea</string>
     <string name="survey_selection">INKESTA HAUTATU</string>
-    <string name="survey_a">A Inkesta</string>
-    <string name="survey_b">B Inkesta</string>
+    <string name="survey_a">Aldarte inkesta</string>
+    <string name="survey_b">Saaki inkesta</string>
     <string name="survey_a_title">A Inkesta</string>
     <string name="question_number">GALDERA %1$d/%2$d</string>
     <string name="next">HURRENGOA</string>

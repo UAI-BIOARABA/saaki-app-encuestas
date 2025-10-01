@@ -3,6 +3,7 @@
     <string name="login_title">INTRODUCIR CÓDIGO</string>
     <string name="login_hint">Código</string>
     <string name="btn_login">Aceptar</string>
+    <string name="lang_title">IDIOMA</string>
     <string name="error_empty_code">Por favor, introduce un código</string>
     <string name="code_entered">Código introducido: %1$s</string>
     <string name="enter_year">Introduce tu año de nacimiento:</string>
@@ -21,8 +22,8 @@
     <string name="hint_year">Año de nacimiento</string>
     <string name="error_empty_year">Introduce el año de nacimiento</string>
     <string name="survey_selection">SELECCIONAR ENCUESTA</string>
-    <string name="survey_a">Encuesta A</string>
-    <string name="survey_b">Encuesta B</string>
+    <string name="survey_a">Encuesta sobre el estado de ánimo</string>
+    <string name="survey_b">Encuesta sobre Saaki</string>
     <string name="survey_a_title">Encuesta A</string>
     <string name="question_number">PREGUNTA %1$d/%2$d</string>
     <string name="next">SIGUIENTE</string>
