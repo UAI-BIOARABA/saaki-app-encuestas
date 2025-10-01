@@ -1,9 +1,6 @@
 package com.example.encuestassaaki.utils
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.content.res.Configuration
-import android.content.res.Resources
 import java.util.Locale
 
 object LocaleHelper {

@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    // Método público para que los fragments puedan hablar
+    // Metodo público para que los fragments puedan hablar
     fun speak(text: String) {
         if (isTtsReady) {
             tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
