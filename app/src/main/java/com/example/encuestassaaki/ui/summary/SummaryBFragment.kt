@@ -116,21 +116,32 @@ class SummaryBFragment : Fragment() {
             }
 
             val fecha = java.text.SimpleDateFormat("yyyy-MM-dd").format(java.util.Date())
-            writer.append("$code,$year,$sex,$fecha")
+            val data = StringBuilder()
+            data.append("$code,$year,$sex,$fecha")
             answers?.forEach { ans ->
-                // Si ans viene de getString(R.string.xxx), buscamos el id y lo convertimos a español
-                val spanishAns = when(ans) {
+                // Si ans viene de getString(R.string.xxx), buscamos la versión en español
+                val spanishAns = when (ans) {
                     getString(R.string.yes) -> getSpanishString(R.string.yes)
                     getString(R.string.moreorless) -> getSpanishString(R.string.moreorless)
                     getString(R.string.no) -> getSpanishString(R.string.no)
                     getString(R.string.answer) -> getSpanishString(R.string.answer)
                     else -> ans
                 }
-                writer.append(",$spanishAns")
+                data.append(",$spanishAns")
             }
-            writer.append("\n")
+            data.append("\n")
+
+            // Guardar en el CSV
+            writer.append(data.toString())
             writer.flush()
             writer.close()
+
+            // 🔹 Guardar también en el .bak
+            val bakFile = File(requireContext().getExternalFilesDir(null), "eb.bak")
+            val bakWriter = FileWriter(bakFile, true)
+            bakWriter.append(data.toString())
+            bakWriter.flush()
+            bakWriter.close()
 
             Toast.makeText(requireContext(), "Respuestas guardadas", Toast.LENGTH_SHORT).show()
             true
@@ -140,6 +151,7 @@ class SummaryBFragment : Fragment() {
             false
         }
     }
+
     private fun getSpanishString(resId: Int): String {
         val spanishConfig = resources.configuration
         val config = Configuration(spanishConfig)

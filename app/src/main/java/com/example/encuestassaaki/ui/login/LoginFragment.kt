@@ -127,7 +127,7 @@ class LoginFragment : Fragment() {
 
         val botonLimpiar = view.findViewById<Button>(R.id.botonLimpiar)
         botonLimpiar?.setOnClickListener {
-            val file = File(requireContext().getExternalFilesDir(null), "usuarios.csv")
+            val file = File(requireContext().getExternalFilesDir(null), "encuesta_b.csv")
             if (file.exists()) {
                 if (file.delete()) {
                     Toast.makeText(requireContext(), "Archivo eliminado correctamente", Toast.LENGTH_SHORT).show()

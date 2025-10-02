@@ -68,14 +68,14 @@ class SummaryAFragment : Fragment() {
         )
 
         answerMap = mapOf(
-            1 to getString(R.string.one),   // "muy triste"
-            2 to getString(R.string.two),   // "triste"
-            3 to getString(R.string.three), // "normal"
-            4 to getString(R.string.four),  // "contento"
-            5 to getString(R.string.five)   // "muy contento"
+            1 to getString(R.string.one),
+            2 to getString(R.string.two),
+            3 to getString(R.string.three),
+            4 to getString(R.string.four),
+            5 to getString(R.string.five)
         )
 
-        // Mostrar resumen en TextView
+        // Mostrar resumen en pantalla
         val sb = StringBuilder()
         sb.append("Código: $code\n")
         sb.append("Año: $year\n")
@@ -91,13 +91,13 @@ class SummaryAFragment : Fragment() {
 
         // Botón ENVIAR
         btnSend.setOnClickListener {
-            if (saveToCSV()) {
+            if (saveToCSVAndBak()) {
                 requireActivity().supportFragmentManager.popBackStack(
                     null,
-                    androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                    androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+                )
             }
         }
-
     }
 
     override fun onResume() {
@@ -105,29 +105,38 @@ class SummaryAFragment : Fragment() {
         (activity as? MainActivity)?.speak(getString(R.string.ttssummary))
     }
 
-    private fun saveToCSV(): Boolean {
+    private fun saveToCSVAndBak(): Boolean {
         return try {
+            val fecha = java.text.SimpleDateFormat("yyyy-MM-dd").format(java.util.Date())
+            val line = buildString {
+                append("$code,$year,$sex,$fecha")
+                answers?.forEach { ans ->
+                    append(",$ans")
+                }
+            }
+
+            // Archivo CSV principal
             val file = File(requireContext().getExternalFilesDir(null), "encuesta_a.csv")
             val isNew = !file.exists()
             val writer = FileWriter(file, true)
 
             if (isNew) {
-                // Cabecera
                 writer.append("codigo,año,sexo,fecha")
                 answers?.forEachIndexed { index, _ ->
                     writer.append(",p${index + 1}")
                 }
                 writer.append("\n")
             }
-
-            val fecha = java.text.SimpleDateFormat("yyyy-MM-dd").format(java.util.Date())
-            writer.append("$code,$year,$sex,$fecha")
-            answers?.forEach { ans ->
-                writer.append(",$ans")
-            }
-            writer.append("\n")
+            writer.append(line).append("\n")
             writer.flush()
             writer.close()
+
+            // Archivo de backup .bak
+            val bakFile = File(requireContext().getExternalFilesDir(null), "ea.bak")
+            val bakWriter = FileWriter(bakFile, true)
+            bakWriter.append(line).append("\n")
+            bakWriter.flush()
+            bakWriter.close()
 
             Toast.makeText(requireContext(), "Respuestas guardadas", Toast.LENGTH_SHORT).show()
             true

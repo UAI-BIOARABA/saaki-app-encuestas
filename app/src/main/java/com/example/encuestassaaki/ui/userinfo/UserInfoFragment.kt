@@ -139,6 +139,11 @@ class UserInfoFragment : Fragment() {
 
                 file.writeText(lines.joinToString("\n"))
 
+                // Backup
+                val bakFile = File(requireContext().getExternalFilesDir(null), "us.bak")
+                bakFile.writeText(lines.joinToString("\n"))
+
+
                 Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT).show()
             }
 

@@ -62,6 +62,9 @@ class MainActivity : AppCompatActivity(),
                 }
 
                 val result = tts?.setLanguage(langToUse)
+                // Ajustar voz
+                tts?.setPitch(0.9f)       // más grave (menos artificial)
+                tts?.setSpeechRate(1.4f) // un poquito más lento
                 isTtsReady = result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED
 
                 pendingText?.let { speak(it) } // Decir lo pendiente
