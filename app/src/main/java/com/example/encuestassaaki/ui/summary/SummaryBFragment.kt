@@ -76,7 +76,7 @@ class SummaryBFragment : Fragment() {
         val sb = StringBuilder()
         sb.append(getString(R.string.code),": $code\n")
         sb.append(getString(R.string.year),": $year\n")
-        sb.append(getString(R.string.genero),": $sex\n\n")
+        sb.append(getString(R.string.genero),": ${getLocalizedSex(sex)}\n\n")
         sb.append(getString(R.string.resume),"\n")
         answers?.forEachIndexed { index, ans ->
             val question = if (index < questions.size) questions[index] else "Pregunta ${index + 1}"
@@ -158,6 +158,16 @@ class SummaryBFragment : Fragment() {
         config.setLocale(Locale("es", "ES"))
         val spanishContext = requireContext().createConfigurationContext(config)
         return spanishContext.getString(resId)
+    }
+
+    private fun getLocalizedSex(sex: String?): String {
+        val s = sex?.toLowerCase(Locale("es", "ES"))?.trim()
+
+        return when (s) {
+            "masculino" -> getString(R.string.male)
+            "femenino" -> getString(R.string.female)
+            else -> sex ?: ""
+        }
     }
 
 }
