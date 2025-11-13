@@ -12,6 +12,7 @@ import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import java.io.File
 import java.io.FileWriter
+import java.util.Locale
 
 class SummaryAFragment : Fragment() {
 
@@ -79,7 +80,7 @@ class SummaryAFragment : Fragment() {
         val sb = StringBuilder()
         sb.append(getString(R.string.code),": $code\n")
         sb.append(getString(R.string.year),": $year\n")
-        sb.append(getString(R.string.genero),": $sex\n\n")
+        sb.append(getString(R.string.genero),": ${getLocalizedSex(sex)}\n\n")
         sb.append(getString(R.string.resume),"\n")
 
         answers?.forEachIndexed { index, ans ->
@@ -146,4 +147,15 @@ class SummaryAFragment : Fragment() {
             false
         }
     }
+
+    private fun getLocalizedSex(sex: String?): String {
+        val s = sex?.toLowerCase(Locale("es", "ES"))?.trim()
+
+        return when (s) {
+            "masculino" -> getString(R.string.male)
+            "femenino" -> getString(R.string.female)
+            else -> sex ?: ""
+        }
+    }
+
 }

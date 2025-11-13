@@ -112,7 +112,8 @@ class UserInfoFragment : Fragment() {
 
         btnSave.setOnClickListener {
             val year = editYear.text.toString().trim()
-            val sex = spinnerSex.selectedItem.toString()
+            val selectedSex = spinnerSex.selectedItem.toString()
+            val sex = normalizeSexToSpanish(selectedSex)
 
             if (!userExists) {
                 val lines = mutableListOf<String>()
@@ -162,5 +163,14 @@ class UserInfoFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
+
+    private fun normalizeSexToSpanish(sexValue: String): String {
+        return when (sexValue.lowercase(Locale.ROOT)) {
+            "gizonezkoa" -> "Masculino"
+            "emakumezkoa" -> "Femenino"
+            else -> sexValue // por si acaso ya viene en castellano
+        }
+    }
+
 
 }
