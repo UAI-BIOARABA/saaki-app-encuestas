@@ -77,10 +77,10 @@ class SummaryAFragment : Fragment() {
 
         // Mostrar resumen en pantalla
         val sb = StringBuilder()
-        sb.append("Código: $code\n")
-        sb.append("Año: $year\n")
-        sb.append("Sexo: $sex\n\n")
-        sb.append("RESUMEN\n")
+        sb.append(getString(R.string.code),": $code\n")
+        sb.append(getString(R.string.year),": $year\n")
+        sb.append(getString(R.string.genero),": $sex\n\n")
+        sb.append(getString(R.string.resume),"\n")
 
         answers?.forEachIndexed { index, ans ->
             val question = if (index < questions.size) questions[index] else "Pregunta ${index + 1}"

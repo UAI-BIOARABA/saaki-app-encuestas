@@ -30,6 +30,10 @@
     <string name="back">ATZERA</string>
     <string name="finish">AMAITU</string>
     <string name="error_select_option">Aukera bat hautatu behar duzu</string>
+    <string name="code">Kodea</string>
+    <string name="year">Jaiotze-Urtea</string>
+    <string name="genero">Generoa</string>
+    <string name="resume">LABURPENA</string>
 
     <string name="q1">Nola sentitzen zara gaur?</string>
     <string name="q2">Nola izan da zure animoa goizean?</string>
