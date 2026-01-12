@@ -73,7 +73,8 @@ class LoginFragment : Fragment() {
             requireActivity().recreate() // recarga toda la UI en euskera
         }
 
-
+    // Botones para compartir los datos internos sin entrar en los archivos, utiles para debug
+    // No los borramos por si los volvemos a necesitar o los queremos implementar en otra parte
         /*
             // Botón compartir usuarios
             val botonUsuarios: Button? = view.findViewById(R.id.botonUsuarios)

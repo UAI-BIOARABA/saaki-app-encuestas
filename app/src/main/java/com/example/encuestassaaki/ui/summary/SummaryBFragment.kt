@@ -136,7 +136,7 @@ class SummaryBFragment : Fragment() {
             writer.flush()
             writer.close()
 
-            // 🔹 Guardar también en el .bak
+            // Guardar también en el .bak
             val bakFile = File(requireContext().getExternalFilesDir(null), "eb.bak")
             val bakWriter = FileWriter(bakFile, true)
             bakWriter.append(data.toString())
