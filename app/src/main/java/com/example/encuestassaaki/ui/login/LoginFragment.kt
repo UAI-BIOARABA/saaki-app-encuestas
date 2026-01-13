@@ -1,6 +1,5 @@
 package com.example.encuestassaaki.ui.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +7,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.encuestassaaki.MainActivity
 import com.example.encuestassaaki.R
 import com.example.encuestassaaki.utils.LocaleHelper
-import java.io.File
 
 /**
  * Fragmento de Inicio de Sesión (Login).
