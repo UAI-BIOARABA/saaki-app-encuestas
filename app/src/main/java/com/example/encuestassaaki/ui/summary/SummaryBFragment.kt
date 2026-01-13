@@ -15,14 +15,30 @@ import java.io.File
 import java.io.FileWriter
 import java.util.Locale
 
+/**
+ * Fragmento de Resumen para la Encuesta B.
+ *
+ * Muestra las respuestas seleccionada y gestiona el guardado en CSV.
+ *
+ * DIFERENCIA CLAVE CON SUMMARY A:
+ * Mientras que la encuesta A guarda números (Int), esta encuesta trabaja con Texto (String).
+ * Esto introduce un desafío: Si la app está en Euskera, las respuestas vienen en Euskera (ej: "Bai").
+ *
+ * Este fragmento es responsable de "Traducir al vuelo" esas respuestas al Castellano
+ * antes de escribirlas en el archivo CSV, para asegurar que la base de datos sea uniforme.
+ */
 class SummaryBFragment : Fragment() {
 
     private var code: String? = null
     private var year: String? = null
     private var sex: String? = null
-    private var answers: ArrayList<String>? = null
+    private var answers: ArrayList<String>? = null // Lista de textos (Strings)
     private lateinit var questions: List<String>
+
     companion object {
+        /**
+         * Crea una nueva instancia recibiendo las respuestas como lista de Strings.
+         */
         fun newInstance(
             code: String,
             year: String,
@@ -57,6 +73,9 @@ class SummaryBFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_summary, container, false)
     }
 
+    /**
+     * Configuración de la vista. Muestra el resumen al usuario.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val textSummary: TextView = view.findViewById(R.id.text_summary)
         val btnSend: Button = view.findViewById(R.id.btn_send)
@@ -72,12 +91,14 @@ class SummaryBFragment : Fragment() {
             getString(R.string.qq8)
         )
 
-        // Mostrar resumen en TextView
+        // Construcción del texto para mostrar en pantalla (UI)
+        // Aquí mostramos los datos tal cual están (en el idioma de la app)
         val sb = StringBuilder()
         sb.append(getString(R.string.code),": $code\n")
         sb.append(getString(R.string.year),": $year\n")
-        sb.append(getString(R.string.genero),": ${getLocalizedSex(sex)}\n\n")
+        sb.append(getString(R.string.genero),": ${getLocalizedSex(sex)}\n\n") // Traducir sexo para visualización
         sb.append(getString(R.string.resume),"\n")
+
         answers?.forEachIndexed { index, ans ->
             val question = if (index < questions.size) questions[index] else "Pregunta ${index + 1}"
             sb.append("$question\nRespuesta: $ans\n\n")
@@ -86,6 +107,7 @@ class SummaryBFragment : Fragment() {
 
         // Botón ENVIAR
         btnSend.setOnClickListener {
+            // Guardamos normalizando al Español
             if (saveToCSV()) {
                 requireActivity().supportFragmentManager.popBackStack(
                     null,
@@ -100,14 +122,21 @@ class SummaryBFragment : Fragment() {
         (activity as? MainActivity)?.speak(getString(R.string.ttssummary))
     }
 
+    /**
+     * Guarda las respuestas en `encuesta_b.csv` y su backup `eb.bak`.
+     *
+     * IMPORTANTE: Realiza una normalización lingüística.
+     * Convierte las respuestas del idioma actual (Euskera/Español) a Español estándar
+     * antes de guardar.
+     */
     private fun saveToCSV(): Boolean {
         return try {
             val file = File(requireContext().getExternalFilesDir(null), "encuesta_b.csv")
             val isNew = !file.exists()
             val writer = FileWriter(file, true)
 
+            // Escribir cabecera si el archivo es nuevo
             if (isNew) {
-                // Cabecera
                 writer.append("codigo,año,sexo,fecha")
                 answers?.forEachIndexed { index, _ ->
                     writer.append(",p${index + 1}")
@@ -117,26 +146,32 @@ class SummaryBFragment : Fragment() {
 
             val fecha = java.text.SimpleDateFormat("yyyy-MM-dd").format(java.util.Date())
             val data = StringBuilder()
+
+            // Metadatos iniciales
             data.append("$code,$year,$sex,$fecha")
+
+            // Procesamiento de respuestas para traducción
             answers?.forEach { ans ->
-                // Si ans viene de getString(R.string.xxx), buscamos la versión en español
+                // LÓGICA DE TRADUCCIÓN INVERSA:
+                // Comparamos el texto que tenemos (ans) con los recursos actuales strings.xml.
+                // Si coincide con alguna opción conocida, forzamos la obtención de su versión en español.
                 val spanishAns = when (ans) {
-                    getString(R.string.yes) -> getSpanishString(R.string.yes)
+                    getString(R.string.yes) -> getSpanishString(R.string.yes)       // Si ans es "Bai", guarda "Si"
                     getString(R.string.moreorless) -> getSpanishString(R.string.moreorless)
                     getString(R.string.no) -> getSpanishString(R.string.no)
                     getString(R.string.answer) -> getSpanishString(R.string.answer)
-                    else -> ans
+                    else -> ans // Si no coincide (error raro), guarda lo que tenga
                 }
                 data.append(",$spanishAns")
             }
             data.append("\n")
 
-            // Guardar en el CSV
+            // Guardar en el CSV principal
             writer.append(data.toString())
             writer.flush()
             writer.close()
 
-            // Guardar también en el .bak
+            // Guardar en el backup (.bak)
             val bakFile = File(requireContext().getExternalFilesDir(null), "eb.bak")
             val bakWriter = FileWriter(bakFile, true)
             bakWriter.append(data.toString())
@@ -152,14 +187,26 @@ class SummaryBFragment : Fragment() {
         }
     }
 
+    /**
+     * Helper avanzado: Obtiene el valor de un String Resource forzando el idioma Español.
+     *
+     * Crea un contexto de configuración temporal configurado en "es_ES" para leer
+     * el archivo `values/strings.xml` (por defecto) en lugar de `values-eu/strings.xml`.
+     *
+     * @param resId El ID del recurso (R.string.yes, etc.)
+     * @return El texto en castellano, independientemente del idioma del dispositivo.
+     */
     private fun getSpanishString(resId: Int): String {
         val spanishConfig = resources.configuration
         val config = Configuration(spanishConfig)
-        config.setLocale(Locale("es", "ES"))
+        config.setLocale(Locale("es", "ES")) // Forzar configuración local
         val spanishContext = requireContext().createConfigurationContext(config)
-        return spanishContext.getString(resId)
+        return spanishContext.getString(resId) // Leer recurso del contexto forzado
     }
 
+    /**
+     * Traduce el sexo almacenado (Español) al idioma visual actual.
+     */
     private fun getLocalizedSex(sex: String?): String {
         val s = sex?.toLowerCase(Locale("es", "ES"))?.trim()
 
