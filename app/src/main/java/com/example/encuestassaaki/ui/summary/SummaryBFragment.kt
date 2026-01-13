@@ -148,7 +148,7 @@ class SummaryBFragment : Fragment() {
             val data = StringBuilder()
 
             // Metadatos iniciales
-            data.append("$code,$year,$sex,$fecha")
+            data.append("${clean(code)},${clean(year)},${clean(sex)},$fecha")
 
             // Procesamiento de respuestas para traducción
             answers?.forEach { ans ->
@@ -162,7 +162,7 @@ class SummaryBFragment : Fragment() {
                     getString(R.string.answer) -> getSpanishString(R.string.answer)
                     else -> ans // Si no coincide (error raro), guarda lo que tenga
                 }
-                data.append(",$spanishAns")
+                data.append(",${clean(spanishAns)}")
             }
             data.append("\n")
 
@@ -215,6 +215,19 @@ class SummaryBFragment : Fragment() {
             "femenino" -> getString(R.string.female)
             else -> sex ?: ""
         }
+    }
+
+    /**
+     * Función para limpiar imputs que irán al CSV.
+     * Sirve para evitar que el archivo se rompa si alguien introduce caracteres que no debería
+     * @param input Texto de un input
+     * @return El string limpio para evitar que rompa CSVs
+     */
+    private fun clean(input: String?): String {
+        return input?.replace(",", ".")   // Cambia comas por puntos
+            ?.replace("\n", " ")   // Quita saltos de línea
+            ?.trim()               // Quita espacios extra
+            ?: ""
     }
 
 }

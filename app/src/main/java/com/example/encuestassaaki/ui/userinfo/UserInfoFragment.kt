@@ -172,7 +172,7 @@ class UserInfoFragment : Fragment() {
                         val parts = line.split(",")
                         // Si por casualidad el código ya estaba (caso raro aquí), lo actualizamos
                         if (parts.isNotEmpty() && parts[0] == code) {
-                            lines.add("$code,$year,$sex")
+                            lines.add("${clean(code)},${clean(year)},${clean(sex)}")
                             updated = true
                         } else {
                             lines.add(line) // Mantenemos las líneas de otros usuarios
@@ -185,7 +185,7 @@ class UserInfoFragment : Fragment() {
 
                 // Si no se actualizó una línea existente, agregamos el nuevo usuario al final
                 if (!updated) {
-                    lines.add("$code,$year,$sex")
+                    lines.add("${clean(code)},${clean(year)},${clean(sex)}")
                 }
 
                 // Reescribimos el archivo completo con los nuevos datos
@@ -240,5 +240,17 @@ class UserInfoFragment : Fragment() {
         }
     }
 
+    /**
+     * Función para limpiar imputs que irán al CSV.
+     * Sirve para evitar que el archivo se rompa si alguien introduce caracteres que no debería
+     * @param input Texto de un input
+     * @return El string limpio para evitar que rompa CSVs
+     */
+    private fun clean(input: String?): String {
+        return input?.replace(",", ".")   // Cambia comas por puntos
+            ?.replace("\n", " ")   // Quita saltos de línea
+            ?.trim()               // Quita espacios extra
+            ?: ""
+    }
 
 }

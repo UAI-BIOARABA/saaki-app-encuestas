@@ -153,7 +153,7 @@ class SummaryAFragment : Fragment() {
 
             // Construir la línea de datos (Comma Separated Values)
             val line = buildString {
-                append("$code,$year,$sex,$fecha") // Metadatos
+                append("${clean(code)},${clean(year)},${clean(sex)},$fecha") // Metadatos
                 answers?.forEach { ans ->
                     append(",$ans") // Respuestas numéricas (1-5)
                 }
@@ -219,4 +219,16 @@ class SummaryAFragment : Fragment() {
         }
     }
 
+    /**
+     * Función para limpiar imputs que irán al CSV.
+     * Sirve para evitar que el archivo se rompa si alguien introduce caracteres que no debería
+     * @param input Texto de un input
+     * @return El string limpio para evitar que rompa CSVs
+     */
+    private fun clean(input: String?): String {
+        return input?.replace(",", ".")   // Cambia comas por puntos
+            ?.replace("\n", " ")   // Quita saltos de línea
+            ?.trim()               // Quita espacios extra
+            ?: ""
+    }
 }
