@@ -20,7 +20,7 @@ Asegúrate de tener instalado Android Studio en tu sistema
 3. Clonar el proyecto:
 
    ```bash
-   git clone https://github.com/UAI-BIOARABA/EncuestasSaaki.git
+   git clone https://github.com/UAI-BIOARABA/saaki-app-encuestas.git
    ```
 
 4. Abrir el proyecto en Android Studio
@@ -72,40 +72,6 @@ File → Manage IDE Settings → Import Settings...
 
 ## 📸 Imagenes de la APP
 
-### 🟥🟨🟥 CASTELLANO
-
-#### Inicio
-
-![Inicio](appimages/es-0-inicio.png)
-
-#### Introducción de datos
-
-![Introducir_datos](appimages/es-1-datos.png)
-
-#### Selección de encuesta
-
-![Seleccionar_encuesta](appimages/es-2-seleccionarencuesta.png)
-
-#### Encuesta A
-
-![Encuesta_A_1](appimages/es-3-encuestaa1.png)
-![Encuesta_A_2](appimages/es-3-encuestaa2.png)
-![Encuesta_A_3](appimages/es-3-encuestaa3.png)
-
-#### Resumen A
-
-![Resumen_A](appimages/es-4-resumena.png)
-
-#### Encuesta B
-
-![Encuesta_B_1](appimages/es-3-encuestab1.png)
-![Encuesta_B_2](appimages/es-3-encuestab2.png)
-![Encuesta_B_3](appimages/es-3-encuestab3.png)
-
-#### Resumen B
-
-![Resumen_B](appimages/es-4-resumenb.png)
-
 ### ⬜🟩🟥 EUSKARA
 
 #### Hasiera
@@ -140,6 +106,40 @@ File → Manage IDE Settings → Import Settings...
 
 ![Laburpena_B](appimages/eu-4-resumenb.png)
 
+### 🟥🟨🟥 CASTELLANO
+
+#### Inicio
+
+![Inicio](appimages/es-0-inicio.png)
+
+#### Introducción de datos
+
+![Introducir_datos](appimages/es-1-datos.png)
+
+#### Selección de encuesta
+
+![Seleccionar_encuesta](appimages/es-2-seleccionarencuesta.png)
+
+#### Encuesta A
+
+![Encuesta_A_1](appimages/es-3-encuestaa1.png)
+![Encuesta_A_2](appimages/es-3-encuestaa2.png)
+![Encuesta_A_3](appimages/es-3-encuestaa3.png)
+
+#### Resumen A
+
+![Resumen_A](appimages/es-4-resumena.png)
+
+#### Encuesta B
+
+![Encuesta_B_1](appimages/es-3-encuestab1.png)
+![Encuesta_B_2](appimages/es-3-encuestab2.png)
+![Encuesta_B_3](appimages/es-3-encuestab3.png)
+
+#### Resumen B
+
+![Resumen_B](appimages/es-4-resumenb.png)
+
 ---
 
 ## 💾 Cómo se guardan los datos
@@ -155,7 +155,7 @@ val file = File(requireContext().getExternalFilesDir(null), "usuarios.csv")
 Entonces, los archivos se almacenan en el almacenamiento privado externo de la app, en la siguiente ruta:
 
 ``` Files
-/storage/emulated/0/Android/data/com.example.encuestassaaki/files/
+/storage/emulated/0/Android/data/org.bioaraba.saakiappencuestas/files/
 ```
 
 Dentro de esa carpeta se encontrarán los siguientes archivos:

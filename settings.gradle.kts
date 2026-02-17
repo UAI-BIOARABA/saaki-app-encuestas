@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "EncuestasSaaki"
+rootProject.name = "saaki-app-encuestas"
 include(":app")

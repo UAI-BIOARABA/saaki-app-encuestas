@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.encuestassaaki"
+    namespace = "org.bioaraba.saakiappencuestas"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.encuestassaaki"
+        applicationId = "org.bioaraba.saakiappencuestas"
         minSdk = 23
         targetSdk = 36
         versionCode = 1
