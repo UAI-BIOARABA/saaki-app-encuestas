@@ -2,7 +2,7 @@
 
 Este documento describe **cómo reproducir la APP de encuestas** en otro equipo.
 
-## 🧠 Requisitos previos
+## 🛠️ Requisitos previos
 
 Asegúrate de tener instalado Android Studio en tu sistema
 
@@ -191,6 +191,14 @@ Los datos se almacenan de la siguiente forma en los archivos CSV:
 
 ---
 
-### 🚨 No almacenamos emoticonos, almacenamos numeros en la escala de 1 a 5 🚨
+## 🚨 NOTAS IMPORTANTES
 
-### 🚨 Los datos se almacenan en castellano independientemente del idioma seleccionado 🚨
+- No almacenamos emoticonos, almacenamos numeros en la escala de 1 a 5.
+- Los datos se almacenan en castellano independientemente del idioma seleccionado.
+
+---
+
+## 🧑‍💻 Autores
+
+- **Project Manager:** [Juan Fernández](https://github.com/jfbioaraba)
+- **Lead Developer:** [Andoni González](https://github.com/andoni92)
