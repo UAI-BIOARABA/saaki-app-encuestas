@@ -1,10 +1,35 @@
-# APP de encuestas para Saaki
+<div align="center">
 
-Este documento describe **cómo reproducir la APP de encuestas** en otro equipo.
+<h1> APP de Encuestas para Saaki - Unitree G1 </h1>
+
+<p>
+  <a href="README.md">English</a> |
+  <a href="README_es.md">Español</a>
+</p>
+
+[![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)](https://developer.android.com/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/Gradle-9E9E9E?logo=gradle&logoColor=02303A)](https://gradle.org/)
+![API](https://img.shields.io/badge/API-23%2B-brightgreen)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Status: Tested on G1](https://img.shields.io/badge/Status-Tested%20on%20Unitree%20G1-success)](#-real-g1-robot)
+</div>
+
+## 📖 Descripción
+
+Este repositorio es una aplicación de Android que se utilizará en el proyecto Saaki. Las personas que interactuen con el Unitree G1 realizarán estas encuestas y nos servirá para saber que impacto tiene este robot sobre las personas.
+
+La app será usada de forma local e interna en el proyecto, únicamente en un dispositivo, por lo que los datos no saldrán de este.
+
+Además, será utilizada únicamente en esukera y castellano, por lo que esos serán los idiomas disponibles. La documentación dentro del código como los comentarios, también estarán en alguno de esos idiomas.
+
+Este README describe características de la aplicación y **cómo reproducir la APP de encuestas** en otro equipo.
+
+---
 
 ## 🛠️ Requisitos previos
 
-Asegúrate de tener instalado Android Studio en tu sistema
+Asegúrate de tener instalado [Android Studio](https://developer.android.com/studio?hl=es-419) en tu sistema.
 
 ---
 
@@ -72,8 +97,6 @@ File → Manage IDE Settings → Import Settings...
 
 ## 📸 Imagenes de la APP
 
-### ⬜🟩🟥 EUSKARA
-
 #### Hasiera
 
 ![Hasiera](appimages/eu-0-inicio.png)
@@ -88,9 +111,7 @@ File → Manage IDE Settings → Import Settings...
 
 #### Inkesta A
 
-![Inkesta_A_1](appimages/eu-3-encuestaa1.png)
 ![Inkesta_A_2](appimages/eu-3-encuestaa2.png)
-![Inkesta_A_3](appimages/eu-3-encuestaa3.png)
 
 #### Laburpena A
 
@@ -98,47 +119,11 @@ File → Manage IDE Settings → Import Settings...
 
 #### Inkesta B
 
-![Inkesta_B_1](appimages/eu-3-encuestab1.png)
 ![Inkesta_B_2](appimages/eu-3-encuestab2.png)
-![Inkesta_B_3](appimages/eu-3-encuestab3.png)
 
 #### Laburpena B
 
 ![Laburpena_B](appimages/eu-4-resumenb.png)
-
-### 🟥🟨🟥 CASTELLANO
-
-#### Inicio
-
-![Inicio](appimages/es-0-inicio.png)
-
-#### Introducción de datos
-
-![Introducir_datos](appimages/es-1-datos.png)
-
-#### Selección de encuesta
-
-![Seleccionar_encuesta](appimages/es-2-seleccionarencuesta.png)
-
-#### Encuesta A
-
-![Encuesta_A_1](appimages/es-3-encuestaa1.png)
-![Encuesta_A_2](appimages/es-3-encuestaa2.png)
-![Encuesta_A_3](appimages/es-3-encuestaa3.png)
-
-#### Resumen A
-
-![Resumen_A](appimages/es-4-resumena.png)
-
-#### Encuesta B
-
-![Encuesta_B_1](appimages/es-3-encuestab1.png)
-![Encuesta_B_2](appimages/es-3-encuestab2.png)
-![Encuesta_B_3](appimages/es-3-encuestab3.png)
-
-#### Resumen B
-
-![Resumen_B](appimages/es-4-resumenb.png)
 
 ---
 
@@ -204,7 +189,8 @@ Los datos se almacenan de la siguiente forma en los archivos CSV:
 - **Lead Developer:** [Andoni González](https://github.com/andoni92)
 
 ---
-## Disclaimer
+
+## Descargo de responsabilidad
 
 Este software y los materiales asociados se proporcionan “tal cual”, sin garantías de ningún tipo, ni expresas ni implícitas, incluyendo —pero no limitándose a— garantías de comercialización, idoneidad para un propósito particular o ausencia de errores.
 
