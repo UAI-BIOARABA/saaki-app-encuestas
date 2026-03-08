@@ -11,8 +11,9 @@
 [![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/Gradle-9E9E9E?logo=gradle&logoColor=02303A)](https://gradle.org/)
 ![API](https://img.shields.io/badge/API-23%2B-brightgreen)
+
+![Research](https://img.shields.io/badge/Type-Research%20Project-lightgrey)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status: Tested on G1](https://img.shields.io/badge/Status-Tested%20on%20Unitree%20G1-success)](#-real-g1-robot)
 </div>
 
 ## 📖 Description
