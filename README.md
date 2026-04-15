@@ -146,7 +146,7 @@ Our device's home page will have 2 icons:
 
 ![app_home](appimages/tablet_app.jpg)
 
-#### The files shortcut icon allows drect acces to the folder with the surveys files
+#### The files shortcut icon allows direct access to the folder with the surveys files
 
 ![data_folder](appimages/tablet_files.jpg)
 
