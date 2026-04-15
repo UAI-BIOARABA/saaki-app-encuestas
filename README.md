@@ -138,7 +138,7 @@ File → Manage IDE Settings → Import Settings...
 
 Our device's home page will have 2 icons:
 - The survey app
-- A shortcut to acces the folder with the saved files and data
+- A shortcut to access the folder with the saved files and data
 
 ![device_home_page](appimages/tablet_home.jpg)
 
@@ -146,7 +146,7 @@ Our device's home page will have 2 icons:
 
 ![app_home](appimages/tablet_app.jpg)
 
-#### The files shortcut icon allows direct access to the folder with the surveys files
+#### The files shortcut icon allows direct access to the folder with the saved survey data files
 
 ![data_folder](appimages/tablet_files.jpg)
 
