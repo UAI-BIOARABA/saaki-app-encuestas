@@ -134,6 +134,23 @@ File → Manage IDE Settings → Import Settings...
 ![Laburpena_B](appimages/eu-4-resumenb.png)
 
 ---
+## 🏠 Device home page
+
+Our device's home page will have 2 icons:
+- The survey app
+- A shortcut to access the folder with the saved files and data
+
+![device_home_page](appimages/tablet_home.jpg)
+
+#### The survey app icon allows direct access to the app
+
+![app_home](appimages/tablet_app.jpg)
+
+#### The files shortcut icon allows direct access to the folder with the saved survey data files
+
+![data_folder](appimages/tablet_files.jpg)
+
+---
 
 ## 💾 How data is stored
 

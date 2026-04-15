@@ -128,6 +128,24 @@ File → Manage IDE Settings → Import Settings...
 
 ---
 
+## 🏠 Página de inicio del dispositivo
+
+La página de inicio de nuestro dispositivo tendrá 2 iconos:
+- La aplicación de encuestas
+- Un atajo a la carpeta con los archivos guardados de la app
+
+![pagina_inicio](appimages/tablet_home.jpg)
+
+#### El icono de la aplicación de encuestas permite el acceso directo a la app
+
+![app_inicio](appimages/tablet_app.jpg)
+
+#### El atajo de archivos permite el acceso directo a la carpeta con los archivos guardados por la app de encuestas
+
+![carpeta_archivos](appimages/tablet_files.jpg)
+
+---
+
 ## 💾 Cómo se guardan los datos
 
 Por motivos como facilidad de lectura y edición, simplicidad en el almacenamiento o exportación y análisis de respuestas, esta app almacena los datos de usuarios y las respuestas a las encuestas en **formatos CSV**.
