@@ -128,7 +128,7 @@ File → Manage IDE Settings → Import Settings...
 
 ---
 
-## 🏠 Pagina de inicio del dispositivo
+## 🏠 Página de inicio del dispositivo
 
 La página de inicio de nuestro dispositivo tendrá 2 iconos:
 - La aplicación de encuestas
