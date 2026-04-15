@@ -140,7 +140,7 @@ La página de inicio de nuestro dispositivo tendrá 2 iconos:
 
 ![app_inicio](appimages/tablet_app.jpg)
 
-#### El atajo de archivos permite el acceso directo a la carpeta con los archivs guardados por la app de encuestas
+#### El atajo de archivos permite el acceso directo a la carpeta con los archivos guardados por la app de encuestas
 
 ![carpeta_archivos](appimages/tablet_files.jpg)
 
