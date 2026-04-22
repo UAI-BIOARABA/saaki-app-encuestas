@@ -18,11 +18,15 @@
 
 ## 📖 Description
 
-This repository contains an Android application used in the **Saaki project**. People who interact with the **Unitree G1** robot will complete these surveys, allowing us to analyze the impact that this robot has on people.
+This repository contains an experimental Android application developed within the context of the Saaki project, intended exclusively for testing and preliminary evaluation purposes.
 
-The app will be used **locally and internally** within the project on a single device, meaning the collected data will not leave that device.
+It is not a final version and is not intended for use in real, production, or clinical environments.
 
-Additionally, the application will only be available in **Basque and Spanish**, which will be the supported languages. The documentation inside the code, including comments, will also be written in one of these languages.
+The included content (questions and answers) has been created based on existing surveys, for illustrative purposes only and without validation for clinical or scientific use.
+
+The application is designed for local and internal use, running on a single device without any external data transmission. However, this repository does not guarantee compliance with the legal, security, or data protection requirements necessary for production use.
+
+The development has been carried out in Basque and Spanish, which are the only available languages. Internal documentation and code comments may be written in either of these languages.
 
 This README describes the features of the application and **how to reproduce the survey app environment** on another machine.
 
