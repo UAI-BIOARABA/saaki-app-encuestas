@@ -18,11 +18,15 @@
 
 ## 📖 Descripción
 
-Este repositorio es una aplicación de Android que se utilizará en el proyecto Saaki. Las personas que interactuen con el Unitree G1 realizarán estas encuestas y nos servirá para saber que impacto tiene este robot sobre las personas.
+Este repositorio contiene una aplicación Android de carácter experimental, desarrollada en el contexto del proyecto Saaki con fines exclusivamente de prueba y evaluación preliminar.
 
-La app será usada de forma local e interna en el proyecto, únicamente en un dispositivo, por lo que los datos no saldrán de este.
+No se trata de una versión final ni está destinada a su uso en entornos reales, productivos o asistenciales.
 
-Además, será utilizada únicamente en esukera y castellano, por lo que esos serán los idiomas disponibles. La documentación dentro del código como los comentarios, también estarán en alguno de esos idiomas.
+Los contenidos incluidos (preguntas y respuestas) se han elaborado tomando como referencia encuestas existentes, con fines ilustrativos y sin validación para su uso clínico o científico.
+
+La aplicación está concebida para un uso local e interno, ejecutándose en un único dispositivo sin transmisión externa de datos. No obstante, este repositorio no garantiza el cumplimiento de requisitos legales, de seguridad o de protección de datos necesarios para un uso en producción.
+
+El desarrollo se ha realizado en euskera y castellano, siendo estos los únicos idiomas disponibles. La documentación interna y los comentarios en el código pueden encontrarse en cualquiera de estos idiomas.
 
 Este README describe características de la aplicación y **cómo reproducir la APP de encuestas** en otro equipo.
 
